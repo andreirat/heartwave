@@ -1,0 +1,14 @@
+{% extends  '@Front/dashboards/base.html.twig' %}
+{% block title %} Nurses {% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/front/js/angular/dashboard/hospital/hospital.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/angular/dashboard/hospital/hospital.controllers.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/angular/dashboard/hospital/hospital.services.js') }}"></script>
+{% endblock %}
+{% block styles %}
+{% endblock %}
+{% block ngApp %} ng-app="hospitalApp" ng-controller="hospitalCtrl" {% endblock %}
+{% block content %}
+
+{% endblock %}

@@ -1,0 +1,7 @@
+hw_api_patients_stats_live:
+    path:     /live/stats
+    defaults: { _controller: FrontBundle:Patient:stats }
+hw_api_patients_stats_history:
+    path:     /history/stats
+    defaults: { _controller: FrontBundle:Patient:history }
+    methods:  POST

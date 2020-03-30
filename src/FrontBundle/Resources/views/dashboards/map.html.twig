@@ -1,0 +1,113 @@
+{% extends  '@Front/dashboards/base.html.twig' %}
+{% block javascripts %}
+    <script src="{{ asset('assets/vendor/ngmap/build/scripts/ng-map.min.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/angular/map/map.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/angular/map/map.controllers.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/angular/map/map.services.js') }}"></script>
+
+{% endblock %}
+{% block styles %}
+
+    {% endblock %}
+{% block ngApp %} ng-app="livemapApp" ng-controller="livemapCtrl as vm" {% endblock %}
+{% block content %}
+<div >
+    <ng-map zoom="12" id="map" center="46.7722642,23.5849266" default-style="false" style="width: 100%; height: 100vh; display: block;" >
+        <marker  id='{[p.id]}'
+                ng-repeat="p in patients track by $index"
+                 position="{[p.latitude]},{[p.longitude]}"
+                 title="{[p.firstName+' '+p.lastName]}"
+                 icon="{[image]}"
+                 on-click="vm.showDetail(p)">
+            </marker>
+                <info-window id="foo-iw">
+                    <div ng-non-bindable="">
+                        <div class="bubble stats">
+                            <div class="p-header">
+                                <div class="map-profile"  style="background: url('/bundles/front/images/pp3.png'); background-position: center; background-size: cover;"></div>
+                                <div class="name">{[vm.p.firstName+ ' ' +vm.p.lastName]}</div>
+                            </div>
+                            <div class="p-details">
+                                <p>Temperature: {[vm.liveStat.temperature | number:1]}</p>
+                                <p>Bpm: {[vm.liveStat.bpm]} bpm</p>
+                                <p>Blood pressure: {[vm.liveStat.tension.max]}/{[vm.liveStat.tension.min]} mmHg</p>
+                            </div>
+                            <div class="view-btn">View Details</div>
+                        </div>
+                        {#<a href="#" ng-click="vm.clicked();">Click Here</a>#}
+                    </div>
+                </info-window>
+    </ng-map>
+    <div class="remodal" data-remodal-id="modal">
+        <div class="alert-container">
+            <div class="alert-panel">
+
+                <div class="alert-header">
+                    <img src="icons/attention.png">
+                    <p class="warning">Warning</p>
+                    <p>Patient is in critical condition!</p>
+                </div>
+
+                <div class="alert-profile">
+                    <div class="a-profile"></div>
+                    <div class="a-user-name">Patient's Profile</div>
+                </div>
+
+                <div class="alert-details">
+
+                    <p>Patient’s heart rate and
+                        <br>blood pressure is <span class="high">very high</span></br>
+                    </p>
+
+                    <div class="details-card heart-rate">
+                        <img src="icons/cardiogram.png">
+                        <div class="value">80</div>
+                        <div class="property">BPM</div>
+                    </div>
+
+                    <div class="details-card blood-pressure">
+                        <img src="icons/blood-pressure-gauge.png">
+                        <div class="value">140/90 mm Hg </div>
+                        <div class="property">Blood Pressure</div>
+                    </div>
+
+                </div>
+
+                <div class="btn-wrapper">
+
+                    <div class="alert-btn">
+
+                        <img src="icons/call-answer.png">
+                        Call emergency contact
+
+                    </div>
+
+                    <div class="alert-btn">
+
+                        <img src="icons/placeholder.png">
+                        Go to Map
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="alert-bg"></div>
+
+        </div>
+
+
+        {#<button data-remodal-action="close" class="remodal-close"></button>#}
+        {#<h1>Remodal</h1>#}
+        {#<p>#}
+            {#{[heartAlert.heart_rate]}#}
+            {#{[heartRate]}#}
+        {#</p>#}
+        {#<br>#}
+        {#<button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>#}
+        {#<button data-remodal-action="confirm" class="remodal-confirm">OK</button>#}
+    </div>
+</div>
+
+{% endblock %}

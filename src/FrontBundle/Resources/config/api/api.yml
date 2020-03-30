@@ -1,0 +1,12 @@
+hw_api_user:
+    resource: "@FrontBundle/Resources/config/api/sections/users.yml"
+    prefix:   /users
+hw_api_hospital:
+    resource: "@FrontBundle/Resources/config/api/sections/hospital.yml"
+    prefix:   /hospital
+hw_api_patient:
+    resource: "@FrontBundle/Resources/config/api/sections/patients.yml"
+    prefix:   /patients
+hw_api_alerts:
+    resource: "@FrontBundle/Resources/config/api/sections/alerts.yml"
+    prefix:   /alerts

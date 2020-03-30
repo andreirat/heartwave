@@ -1,0 +1,19 @@
+front_homepage:
+    path:     /
+    defaults: { _controller: FrontBundle:Default:index }
+front_map:
+    path:     /map
+    defaults: { _controller: FrontBundle:Default:map }
+front_hospital_doctors:
+    path:     /doctors
+    defaults: { _controller: FrontBundle:Hospital:doctors }
+front_hospital_nurses:
+    path:     /nurses
+    defaults: { _controller: FrontBundle:Hospital:nurses }
+front_hospital_patients:
+    path:     /patients
+    defaults: { _controller: FrontBundle:Hospital:patients }
+
+api:
+    resource: "@FrontBundle/Resources/config/api/api.yml"
+    prefix:   /api

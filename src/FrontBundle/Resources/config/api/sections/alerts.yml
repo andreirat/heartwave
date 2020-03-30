@@ -1,0 +1,3 @@
+hw_api_hospitals_stats:
+    path:     /heart
+    defaults: { _controller: FrontBundle:Alerts:heart }

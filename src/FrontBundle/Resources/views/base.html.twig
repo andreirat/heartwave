@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="{{ path('front_homepage') }}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('bundles/front/images/faviconn150x150.ico') }}">
+
+    <title>{% block title  %} HeartWave {% endblock %}</title>
+    {# Third Party Libraries CSS files go here! #}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
+    {% stylesheets
+    filter="cssrewrite"  filter='uglifycss' output="css/thidparty.css" %}
+    <link rel="stylesheet" href="{{ asset(asset_url) }}" />
+    {% endstylesheets %}
+
+    {% stylesheets
+
+        filter="cssrewrite"  filter='uglifycss' output="css/commonfront.css" %}
+    <link rel="stylesheet" href="{{ asset(asset_url) }}" />
+    {% endstylesheets %}
+    {# Page custom CSS files go here! #}
+    {% block styles %} {% endblock %}
+    {# Third Party Libraries JS files go here! #}
+    {% javascripts
+    'assets/vendor/angular/angular.min.js'
+    output='js/main.js'
+    %}
+    <script src="{{ asset(asset_url) }}"></script>
+    {% endjavascripts %}
+
+
+    {% javascripts
+    output='js/angularMin.js'
+    %}
+    <script src="{{ asset(asset_url) }}"></script>
+
+
+    {% endjavascripts %}
+    {#Page custom JS files go here!#}
+    {% block javascripts %} {% endblock %}
+</head>
+<body   {% block ngApp %}{% endblock %}>
+
+<!-- page content goes here-->
+{% block content %}{% endblock %}
+</body>
+</html>

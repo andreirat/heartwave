@@ -1,0 +1,175 @@
+{% extends 'FrontBundle:dashboards:base.html.twig' %}
+{% block title %} Dashboard {% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/front/js/angular/dashboard/hospital/hospital.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/angular/dashboard/hospital/hospital.controllers.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/angular/dashboard/hospital/hospital.services.js') }}"></script>
+    <script src="{{ asset('assets/vendor/remodal/dist/remodal.min.js') }}"></script>
+{% endblock %}
+{% block ngApp %} ng-app="hospitalApp" ng-controller="hospitalCtrl as vm" {% endblock %}
+{% block content %}
+        <div class="left-content">
+
+            <div class="overview">
+
+                <h2>Overview</h2>
+                <div class="filter"></div>
+
+                <div class="stats overview-stats">
+                    <h3>{[stats.doctors]}</h3>
+                    <p>Doctors</p>
+                </div>
+
+                <div class="stats overview-stats">
+                    <h3>23</h3>
+                    <p>Nurses</p>
+                </div>
+
+                <div class="stats overview-stats">
+                    <h3>23</h3>
+                    <p>Requests</p>
+                </div>
+
+                <div class="stats overview-stats">
+                    <h3>{[stats.patients]}</h3>
+                    <p>Patients</p>
+                </div>
+
+            </div>
+
+            <div class="patients-on-map">
+                <h2>Patients On Map</h2>
+                <div class="stats patients-on-map-stats">
+                    <ng-map zoom="12" id="map" center="46.7722642,23.5849266" default-style="false" style="width: 100%; height: 250px; display: block;" >
+                        <marker  id='{[p.id]}'
+                                 ng-repeat="p in patients track by $index"
+                                 position="{[p.latitude]},{[p.longitude]}"
+                                 title="{[p.firstName+' '+p.lastName]}"
+                                 icon="{[image]}"
+                                 on-click="vm.showDetail(p)">
+                        </marker>
+                        <info-window id="foo-iw">
+                            <div ng-non-bindable="">
+                                <div class="bubble stats">
+                                    <div class="p-header">
+                                        <div class="map-profile"  style="background: url('/bundles/front/images/pp3.png'); background-position: center; background-size: cover;"></div>
+                                        <div class="name">{[vm.p.firstName+ ' ' +vm.p.lastName]}</div>
+                                    </div>
+                                    <div class="view-btn">View Details</div>
+                                </div>
+                                {#<a href="#" ng-click="vm.clicked();">Click Here</a>#}
+                            </div>
+                        </info-window>
+                    </ng-map>
+                </div>
+            </div>
+            <div class="patients-week-stats">
+
+                <h2>Patients</h2>
+
+                <div class="stats patients-stats">
+                    <div id="container" style="width:100%; height:250px;"></div>
+
+                </div>
+
+            </div>
+
+
+
+        </div> <!--end left content-->
+
+
+
+
+        <div class="right-content">
+
+            <div class="doctors-availability">
+
+                <div class="doctors-header">
+                    <h2>Doctors availability</h2>
+                    <div class="filter"></div>
+                </div>
+
+                <div class="list-wrapper">
+
+                    <div class="stats doctors-stats available" ng-repeat="doctor in doctors">
+
+                        <div class="doctor-profile" style="background: url('/bundles/front/images/ppp.png'); background-position: center; background-size: cover;"></div>
+                        <div class="doctor-detail">
+                            <p class="name">{[doctor.firstName+ ' '+ doctor.lastName]}</p>
+                            <p class="specialization">{[doctor.speciality]}</p>
+                            <p class="green">Available</p>
+                        </div>
+                        <div class="doctor-data">
+
+                            <div class="data">
+                                <span>3</span>
+                                <p class="data-name">Patients</p>
+                            </div>
+
+                            <div class="data">
+                                <span>0</span>
+                                <p class="data-name">Today Patients</p>
+                            </div>
+
+                        </div>
+
+                    </div><!--end doctor stats-->
+
+                    <div class="stats doctors-stats booked">
+
+                        <div class="doctor-profile" style="background: url('/bundles/front/images/pp1.png'); background-position: center; background-size: cover;"></div>
+                        <div class="doctor-detail">
+                            <p class="name">Alice Priston</p>
+                            <p class="specialization"> Pediatric cardiologist </p>
+                            <p class="red">Booked</p>
+                        </div>
+                        <div class="doctor-data">
+
+                            <div class="data">
+                                <span>11</span>
+                                <p class="data-name">Pacients</p>
+                            </div>
+
+                            <div class="data">
+                                <span>32</span>
+                                <p class="data-name">Today Patients</p>
+                            </div>
+
+                        </div>
+
+                    </div><!--end doctor stats-->
+
+
+
+                    <div class="stats doctors-stats na">
+
+                        <div class="doctor-profile" style="background: url('/bundles/front/images/pp2.png'); background-position: center; background-size: cover;"></div>
+                        <div class="doctor-detail">
+                            <p class="name">Bob Cooper</p>
+                            <p class="specialization">Neurologists</p>
+                            <p class="purple">N/A</p>
+                        </div>
+                        <div class="doctor-data">
+
+                            <div class="data">
+                                <span>32</span>
+                                <p class="data-name">Pacients</p>
+                            </div>
+
+                            <div class="data">
+                                <span>0</span>
+                                <p class="data-name">Today Pacients</p>
+                            </div>
+
+                        </div>
+
+                    </div><!--end doctor stats-->
+
+
+                </div><!--end list wrapper-->
+            </div>
+        </div>
+
+{% endblock %}

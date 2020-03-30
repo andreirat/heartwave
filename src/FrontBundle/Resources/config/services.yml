@@ -1,0 +1,10 @@
+services:
+    hw.users:
+        class: FrontBundle\Services\UserService
+        arguments: [ '@service_container', '@doctrine.orm.entity_manager' ]
+    hw.hospital:
+        class: FrontBundle\Services\HospitalService
+        arguments: [ '@service_container', '@doctrine.orm.entity_manager' ]
+    hw.patient:
+        class: FrontBundle\Services\PatientService
+        arguments: [ '@service_container', '@doctrine.orm.entity_manager' ]

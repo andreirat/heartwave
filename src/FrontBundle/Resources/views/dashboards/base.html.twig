@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <base href="{{ path('front_homepage') }}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('bundles/front/images/faviconn150x150.ico') }}">
+
+    <title>{% block title  %} HeartWave {% endblock %}</title>
+    {# Third Party Libraries CSS files go here! #}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    {% stylesheets
+    'bundles/front/css/dashboard.css'
+    'bundles/front/css/style.css'
+    'assets/vendor/remodal/dist/remodal.css'
+    'assets/vendor/remodal/dist/remodal-default-theme.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    {# Page custom CSS files go here! #}
+    {% block styles %} {% endblock %}
+    {# Third Party Libraries JS files go here! #}
+    {% javascripts
+    'assets/vendor/angular/angular.min.js'
+    'assets/vendor/ngmap/build/scripts/ng-map.min.js'
+    'bundles/front/js/angular/general/general.js'
+    'bundles/front/js/angular/general/general.controllers.js'
+    'bundles/front/js/angular/general/general.services.js'
+    'bundles/front/js/angular/dashboard/alert/alert.js'
+    'bundles/front/js/angular/dashboard/alert/alert.controllers.js'
+    'bundles/front/js/angular/dashboard/alert/alert.services.js'
+    'assets/vendor/remodal/dist/remodal.min.js'
+    'assets/vendor/highcharts/highcharts.js'
+    output='js/dashboard.js'
+    %}
+    <script src="{{ asset(asset_url) }}"></script>
+    {% endjavascripts %}
+    <script type="text/javascript" src="{{ 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCy46upQV4-KW6TJ9CKJuhJaSx6nlUDyw4' }}"></script>
+
+    {#Page custom JS files go here!#}
+    {% block javascripts %} {% endblock %}
+</head>
+
+<body>
+<div id="main-container"{% block ngApp %} {% endblock %} >
+    <div class="sidebar-container">
+        <div class="profile">
+            <div class="profile-img">
+                <img src="{{ asset('bundles/front/images/icons/logo.png') }}">
+            </div>
+            <h1 class="user-name">Medical Center</h1>
+            <p class="user-specialization">Specialization</p>
+            <div class="view-btn view-profile">View Profile</div>
+        </div>
+        <div class="map-btn"><img src="{{ asset('bundles/front/images/icons/map.png') }}"><a href="{{ path('front_map') }}">Patients on Map</a></div>
+        <ul class="menu">
+            <ul class="menu">
+                <li class="dashboard active"><img src="{{ asset('bundles/front/images/icons/medical-history.png') }}"><a href="{{ path('front_homepage') }}">Dashboard</a></li>
+                <li class="doctors"><img src="{{ asset('bundles/front/images/icons/surgeon.png') }}"><a href="{{ path('front_hospital_doctors') }}">Doctors</a></li>
+                <li class="nurses"><img src="{{ asset('bundles/front/images/icons/nurse.png') }}"><a href="{{ path('front_hospital_nurses') }}">Nurses</a></li>
+                <li class="patients"><img src="{{ asset('bundles/front/images/icons/baby.png') }}"><a href="{{ path('front_hospital_patients') }}">Patients</a></li>
+            </ul>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="settings"><img src="{{ asset('bundles/front/images/icons/cogwheels.png') }}"></div>
+            <div class="sign-out"><img src="{{ asset('bundles/front/images/icons/exit.png') }}"></div>
+        </div>
+
+    </div>    <!--end sidebar container-->
+
+    <div class="top-bar">
+        <form>
+            <input class="search" type="text" placeholder="Search">
+            <img class="search-icon" src="{{ asset('bundles/front/images/icons/magnifying-glass.png') }}">
+            </input>
+        </form>
+        <div class="alert-wrapper">
+            <div class="notifications"><img src="{{ asset('bundles/front/images/icons/notification.png') }}">
+                <div class="bullet"></div>
+            </div>
+            <div class="messages"><img src="{{ asset('bundles/front/images/icons/closed-envelope.png') }}"></div>
+        </div>
+    </div>
+    <div class="content-container">
+        {% block content %}{% endblock %}
+    </div>
+
+</div><!--end main-container-->
+
+</body>
+</html>

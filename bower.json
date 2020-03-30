@@ -1,0 +1,29 @@
+{
+  "name": "heartwave",
+  "homepage": "https://github.com/andreirat/heartwave",
+  "authors": [
+    "andrei.rat <andreirat@ymail.com>"
+  ],
+  "description": "Health monitor",
+  "main": "",
+  "keywords": [
+    "health",
+    "monitor",
+    "care",
+    "hospital"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "ngmap": "^1.18.4",
+    "highcharts": "^5.0.12",
+    "remodal": "^1.1.1"
+  }
+}

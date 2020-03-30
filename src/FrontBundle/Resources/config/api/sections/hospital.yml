@@ -1,0 +1,6 @@
+hw_api_hospitals_doctors:
+    path:     /doctors
+    defaults: { _controller: FrontBundle:Hospital:getDoctors }
+hw_api_hospitals_stats:
+    path:     /dashboard
+    defaults: { _controller: FrontBundle:Hospital:dashboard }

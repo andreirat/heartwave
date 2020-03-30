@@ -1,0 +1,11 @@
+{% extends 'FrontBundle:dashboards:base.html.twig' %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/front/js/angular/dashboard/patient/patient.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/angular/dashboard/patient/patient.controllers.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/angular/dashboard/patient/patient.services.js') }}"></script>
+{% endblock %}
+
+{% block ngApp %} ng-app="patientApp" ng-controller="patientCtrl" {% endblock %}
+{% block content %}
+    adaaasd
+{% endblock %}

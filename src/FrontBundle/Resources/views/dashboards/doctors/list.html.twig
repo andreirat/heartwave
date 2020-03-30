@@ -1,0 +1,143 @@
+{% extends  '@Front/dashboards/base.html.twig' %}
+{% block title %} Doctors {% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/front/js/angular/dashboard/hospital/hospital.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/angular/dashboard/hospital/hospital.controllers.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/angular/dashboard/hospital/hospital.services.js') }}"></script>
+{% endblock %}
+{% block styles %}
+{% endblock %}
+{% block ngApp %} ng-app="hospitalApp" ng-controller="docCtrl" {% endblock %}
+{% block content %}
+    <div class="left-content">
+        <div class="doctors-availability">
+            <div class="doctors-header">
+                <h2>Doctors availability</h2>
+                <div class="filter"></div>
+            </div>
+
+            <div class="list-wrapper">
+
+                <div class="stats doctors-stats available" ng-repeat="doctor in doctors">
+
+                    <div class="doctor-profile" style="background: url('/bundles/front/images/ppp.png'); background-position: center; background-size: cover;"></div>
+                    <div class="doctor-detail">
+                        <p class="name">{[doctor.firstName+ ' '+ doctor.lastName]}</p>
+                        <p class="specialization">{[doctor.speciality]}</p>
+                        <p class="green">Available</p>
+                    </div>
+                    <div class="doctor-data">
+
+                        <div class="data">
+                            <span>3</span>
+                            <p class="data-name">Patients</p>
+                        </div>
+
+                        <div class="data">
+                            <span>0</span>
+                            <p class="data-name">Today Patients</p>
+                        </div>
+
+                    </div>
+
+                </div><!--end doctor stats-->
+
+                <div class="stats doctors-stats booked">
+
+                    <div class="doctor-profile" style="background: url('/bundles/front/images/pp1.png'); background-position: center; background-size: cover;"></div>
+                    <div class="doctor-detail">
+                        <p class="name">Alice Priston</p>
+                        <p class="specialization"> Pediatric cardiologist </p>
+                        <p class="red">Booked</p>
+                    </div>
+                    <div class="doctor-data">
+
+                        <div class="data">
+                            <span>11</span>
+                            <p class="data-name">Pacients</p>
+                        </div>
+
+                        <div class="data">
+                            <span>32</span>
+                            <p class="data-name">Today Patients</p>
+                        </div>
+
+                    </div>
+
+                </div><!--end doctor stats-->
+
+
+
+                <div class="stats doctors-stats na">
+
+                    <div class="doctor-profile" style="background: url('/bundles/front/images/pp2.png'); background-position: center; background-size: cover;"></div>
+                    <div class="doctor-detail">
+                        <p class="name">Bob Cooper</p>
+                        <p class="specialization">Neurologists</p>
+                        <p class="purple">N/A</p>
+                    </div>
+                    <div class="doctor-data">
+
+                        <div class="data">
+                            <span>32</span>
+                            <p class="data-name">Pacients</p>
+                        </div>
+
+                        <div class="data">
+                            <span>0</span>
+                            <p class="data-name">Today Pacients</p>
+                        </div>
+
+                    </div>
+
+                </div><!--end doctor stats-->
+
+
+            </div><!--end list wrapper-->
+        </div>
+
+    </div> <!--end left content-->
+    <div class="right-content">
+        <div class="surgeons">
+            <h2>surgeons</h2>
+            <div class="stats surgeons-stats" ng-repeat="doctor in doctors">
+                <div class="surgeons-detail-wrapper">
+                    <div class="surgeons-profile" style="background: url('/bundles/front/images/ppp.png'); background-position: center; background-size: cover;"></div>
+                    <div class="surgeons-details">
+                        <p class="surgeon-name">{[doctor.firstName+ ' '+ doctor.lastName]}</p>
+                        <p class="specialization">{[doctor.speciality]}</p>
+                        <div class="view-btn">View History</div>
+                    </div>
+                </div>
+                <div class="surgeon-nurses-wrapper">
+                    <p>Operates With</p>
+                    <div class="surgeon-nurse-profile"  style="background: url('/bundles/front/images/pp2.png'); background-position: center; background-size: cover;"></div>
+                    <div class="surgeon-nurse-profile"  style="background: url('/bundles/front/images/pp3.png'); background-position: center; background-size: cover;"></div>
+                </div>
+            </div><!--end surgeons stats-->
+
+            <div class="stats surgeons-stats">
+                <div class="surgeons-detail-wrapper">
+                    <div class="surgeons-profile" style="background: url('/bundles/front/images/pp2.png'); background-position: center; background-size: cover;"></div>
+                    <div class="surgeons-details">
+                        <p class="surgeon-name">Rafael Iglesias</p>
+                        <p class="specialization">Plastic Chirurgy </p>
+                        <div class="view-btn">View History</div>
+                    </div>
+
+                </div>
+
+                <div class="surgeon-nurses-wrapper">
+                    <p>Operates With</p>
+                    <div class="surgeon-nurse-profile"  style="background: url('/bundles/front/images/ppp.png'); background-position: center; background-size: cover;"></div>
+                    <div class="surgeon-nurse-profile"  style="background: url('/bundles/front/images/pp1.png'); background-position: center; background-size: cover;"></div>
+                </div>
+            </div><!--end surgeons stats-->
+        </div><!--end surgeons-->
+
+
+    </div><!--end right content-->
+
+
+{% endblock %}

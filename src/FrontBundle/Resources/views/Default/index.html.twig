@@ -1,0 +1,13 @@
+{% extends 'FrontBundle::base.html.twig' %}
+    {% block javascripts %}
+      <script src="{{ asset('bundles/front/js/angular/homepage/homepage.js') }}"></script>
+      <script src="{{ asset('bundles/front/js/angular/homepage/homepage.controllers.js') }}"></script>
+      <script src="{{ asset('bundles/front/js/angular/homepage/homepage.services.js') }}"></script>
+    {% endblock %}
+{% block ngApp %}ng-app="homepageApp" ng-controller="homepageCtrl" {% endblock %}
+
+{% block content %}
+
+hahaha
+
+{% endblock %}
